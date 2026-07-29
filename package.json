@@ -1,0 +1,45 @@
+{
+  "name": "@sorokit/ui",
+  "version": "0.0.1",
+  "description": "Stellar Soroban UI Component Library",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+  "build": "tsup src/index.ts --format cjs,esm --dts-resolve --minify --clean",
+  "dev": "tsup src/index.ts --format cjs,esm --watch --dts",
+  "lint": "tsc --noEmit",
+  "test": "vitest"
+}
+  "keywords": [
+    "stellar",
+    "soroban",
+    "react",
+    "ui-kit"
+  ],
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.378.0",
+    "tailwind-merge": "^2.3.0"
+  }
+}

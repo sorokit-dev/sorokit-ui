@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sorokit-primary: 79 70 229; /* Indigo 600 */
+  --sorokit-primary-foreground: 255 255 255;
+  --sorokit-background: 255 255 255;
+  --sorokit-muted: 241 245 249;
+  --sorokit-radius: 0.5rem;
+}
+
+.dark {
+  --sorokit-background: 15 23 42;
+  --sorokit-muted: 30 41 59;
+}
