@@ -3,18 +3,18 @@
   "version": "0.0.1",
   "description": "Stellar Soroban UI Component Library",
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-  "build": "tsup src/index.ts --format cjs,esm --dts-resolve --minify --clean",
-  "dev": "tsup src/index.ts --format cjs,esm --watch --dts",
-  "lint": "tsc --noEmit",
-  "test": "vitest"
-}
+    "build": "tsup src/index.ts --format cjs,esm --dts --minify --clean",
+    "dev": "tsup src/index.ts --format cjs,esm --watch --dts",
+    "lint": "tsc --noEmit",
+    "test": "vitest --passWithNoTests"
+  },
   "keywords": [
     "stellar",
     "soroban",

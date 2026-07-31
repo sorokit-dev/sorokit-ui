@@ -1,4 +1,5 @@
 import React from 'react';
+import { twMerge } from 'tailwind-merge';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
@@ -26,7 +27,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         ref={ref}
-        className={`${base} ${variants[variant]} ${sizes[size]} ${className}`}
+        className={twMerge(base, variants[variant], sizes[size], className)}
         disabled={isLoading || props.disabled}
         {...props}
       >
