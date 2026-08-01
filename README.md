@@ -2,7 +2,7 @@
 
 A modular library of pre-built, beautifully designed, and highly accessible user interface components engineered specifically for Stellar dApps.
 
-Good developer tooling isn't just about fast logic—it's about creating a frictionless user experience. **Sorokit UI** sits directly on top of `@sorobun/core` to provide drop-in frontend patterns, allowing developers to skip UI prototyping and focus on core smart contract logic.
+Good developer tooling is not just about fast logic; it is about creating a frictionless user experience. **Sorokit UI** sits directly on top of `@sorobun/core` to provide drop-in frontend patterns, allowing developers to skip UI prototyping and focus on core smart contract logic.
 
 ### Key Capabilities
 * **Frictionless Connect Buttons:** Ready-to-use wallet connection buttons with built-in asset icons, connected states, and modal dialogs.
