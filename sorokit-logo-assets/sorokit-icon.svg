@@ -1,0 +1,26 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6D28D9"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded-square backdrop -->
+  <rect x="0" y="0" width="512" height="512" rx="112" fill="url(#bg)"/>
+
+  <!-- Mark: two facing brackets (dev / SDK) joined by a connector node (wallet <-> contract link) -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+    <!-- left bracket < -->
+    <path d="M 190 150 L 118 256 L 190 362"/>
+    <!-- right bracket > -->
+    <path d="M 322 150 L 394 256 L 322 362"/>
+  </g>
+
+  <!-- connector line -->
+  <line x1="214" y1="256" x2="298" y2="256" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round"/>
+
+  <!-- connector node (filled circle) -->
+  <circle cx="256" cy="256" r="30" fill="#FFFFFF"/>
+  <circle cx="256" cy="256" r="14" fill="#2563EB"/>
+</svg>

@@ -1,0 +1,23 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6D28D9"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon mark -->
+  <g transform="translate(0,0)">
+    <rect x="0" y="0" width="360" height="360" rx="80" fill="url(#bg)"/>
+    <g fill="none" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 134 106 L 84 180 L 134 254"/>
+      <path d="M 226 106 L 276 180 L 226 254"/>
+    </g>
+    <line x1="150" y1="180" x2="210" y2="180" stroke="#FFFFFF" stroke-width="13" stroke-linecap="round"/>
+    <circle cx="180" cy="180" r="21" fill="#FFFFFF"/>
+    <circle cx="180" cy="180" r="10" fill="#2563EB"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="400" y="222" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="140" fill="#FFFFFF">sorokit</text>
+</svg>
