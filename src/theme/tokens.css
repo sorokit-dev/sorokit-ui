@@ -1,16 +1,31 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+/**
+ * Import once in your app entry: import "@sorokit/ui/styles.css";
+ * Override any variable in your own CSS to rebrand without touching components.
+ */
 :root {
-  --sorokit-primary: 79 70 229; /* Indigo 600 */
-  --sorokit-primary-foreground: 255 255 255;
-  --sorokit-background: 255 255 255;
-  --sorokit-muted: 241 245 249;
-  --sorokit-radius: 0.5rem;
+  --sorokit-bg: 255 255 255;
+  --sorokit-surface: 246 247 249;
+  --sorokit-border: 225 227 231;
+  --sorokit-text: 17 20 24;
+  --sorokit-text-muted: 100 106 115;
+  --sorokit-accent: 59 91 219;
+  --sorokit-accent-fg: 255 255 255;
+  --sorokit-success: 22 163 74;
+  --sorokit-danger: 220 38 38;
+  --sorokit-pending: 217 119 6;
+  --sorokit-radius: 0.75rem;
 }
 
 .dark {
-  --sorokit-background: 15 23 42;
-  --sorokit-muted: 30 41 59;
+  --sorokit-bg: 15 17 21;
+  --sorokit-surface: 24 27 33;
+  --sorokit-border: 41 45 53;
+  --sorokit-text: 237 238 240;
+  --sorokit-text-muted: 156 163 175;
+  --sorokit-accent: 99 129 245;
+  --sorokit-accent-fg: 15 17 21;
+  --sorokit-success: 74 222 128;
+  --sorokit-danger: 248 113 113;
+  --sorokit-pending: 251 191 36;
+  --sorokit-radius: 0.75rem;
 }

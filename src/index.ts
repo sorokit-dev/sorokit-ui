@@ -1,11 +1,24 @@
-/// <reference path="./env.d.ts" />
-import './theme/tokens.css';
+// Connect
+export { ConnectButton } from "./components/connect/ConnectButton";
+export { WalletModal } from "./components/connect/WalletModal";
+export { WalletIcon } from "./components/connect/WalletIcon";
 
-// Components
-export * from './components/shared/Button';
-export * from './components/connect/ConnectButton';
+// Toast
+export { ToastProvider, useToastContext } from "./components/toast/ToastProvider";
+export { TxToast } from "./components/toast/TxToast";
+export { useTxToast } from "./components/toast/useTxToast";
+export type { ToastItem } from "./components/toast/ToastProvider";
+
+// Shared primitives (exported in case consumers want to build on them)
+export { Button } from "./components/shared/Button";
+export type { ButtonProps } from "./components/shared/Button";
+export { Modal } from "./components/shared/Modal";
+export type { ModalProps } from "./components/shared/Modal";
+
+// Hooks
+export { useWalletState } from "./hooks/useWalletState";
+export { useContractCall } from "./hooks/useContractCall";
+export type { CallStatus, UseContractCallOptions } from "./hooks/useContractCall";
 
 // Theme
-// Change this line to use a relative path with a specific export
-import sorokitPreset from './theme/tailwind.config';
-export { sorokitPreset };
+import "./theme/tokens.css";

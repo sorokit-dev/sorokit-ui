@@ -1,33 +1,43 @@
-import React from 'react';
-import { Button } from '../shared/Button';
+import { useState } from "react";
+import type { WalletId } from "../../types";
+import { useWalletState } from "../../hooks/useWalletState";
+import { Button } from "../shared/Button";
+import { WalletModal } from "./WalletModal";
+import { WalletIcon } from "./WalletIcon";
 
-export interface ConnectButtonProps {
-  label?: string;
-  isConnected?: boolean;
-  address?: string;
-  onClick?: () => void;
+function truncate(address: string) {
+  return `${address.slice(0, 4)}…${address.slice(-4)}`;
 }
 
-export const ConnectButton: React.FC<ConnectButtonProps> = ({ 
-  label = "Connect Wallet", 
-  isConnected, 
-  address, 
-  onClick 
-}) => {
+export function ConnectButton() {
+  const { isConnected, isConnecting, address, walletId, connect, disconnect } = useWalletState();
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleSelect = async (id: WalletId) => {
+    await connect(id);
+    setModalOpen(false);
+  };
+
+  if (isConnected && address) {
+    return (
+      <Button variant="secondary" onClick={disconnect}>
+        {walletId && <WalletIcon walletId={walletId as WalletId} size={16} />}
+        {truncate(address)}
+      </Button>
+    );
+  }
+
   return (
-    <Button 
-      variant={isConnected ? "outline" : "primary"}
-      onClick={onClick}
-      className="font-semibold shadow-sm"
-    >
-      {isConnected && address ? (
-        <div className="flex items-center gap-2">
-          <div className="h-2 w-2 rounded-full bg-green-500" />
-          {address.slice(0, 4)}...{address.slice(-4)}
-        </div>
-      ) : (
-        label
-      )}
-    </Button>
+    <>
+      <Button onClick={() => setModalOpen(true)} disabled={isConnecting}>
+        {isConnecting ? "Connecting…" : "Connect Wallet"}
+      </Button>
+      <WalletModal
+        open={modalOpen}
+        onOpenChange={setModalOpen}
+        onSelect={handleSelect}
+        connectingId={isConnecting ? (walletId as WalletId | null) : null}
+      />
+    </>
   );
-};
+}
