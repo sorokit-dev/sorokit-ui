@@ -11,6 +11,7 @@ export default defineConfig({
       name: "SorokitUI",
       fileName: (format) => (format === "es" ? "index.js" : "index.cjs"),
       formats: ["es", "cjs"],
+      cssFileName: "styles",
     },
     rollupOptions: {
       // Never bundle these — the consuming app supplies them.
@@ -20,6 +21,8 @@ export default defineConfig({
           react: "React",
           "react-dom": "ReactDOM",
         },
+        assetFileNames: (assetInfo) =>
+          assetInfo.name === "style.css" ? "styles.css" : "assets/[name]-[hash][extname]",
       },
     },
     sourcemap: true,
