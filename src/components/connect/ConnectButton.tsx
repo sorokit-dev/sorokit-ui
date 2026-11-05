@@ -12,10 +12,19 @@ function truncate(address: string) {
 export function ConnectButton() {
   const { isConnected, isConnecting, address, walletId, connect, disconnect } = useWalletState();
   const [modalOpen, setModalOpen] = useState(false);
+  // The wallet the user just picked. useWalletState's walletId only becomes
+  // set once the connection succeeds, so it cannot identify the wallet that
+  // is currently connecting.
+  const [pendingId, setPendingId] = useState<WalletId | null>(null);
 
   const handleSelect = async (id: WalletId) => {
-    await connect(id);
-    setModalOpen(false);
+    setPendingId(id);
+    try {
+      await connect(id);
+    } finally {
+      setPendingId(null);
+      setModalOpen(false);
+    }
   };
 
   if (isConnected && address) {
@@ -36,7 +45,7 @@ export function ConnectButton() {
         open={modalOpen}
         onOpenChange={setModalOpen}
         onSelect={handleSelect}
-        connectingId={isConnecting ? (walletId as WalletId | null) : null}
+        connectingId={isConnecting ? pendingId : null}
       />
     </>
   );
