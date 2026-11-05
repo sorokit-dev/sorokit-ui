@@ -1,19 +1,13 @@
-/** @type {import('tailwindcss').Config} */
+import preset from "./tailwind-preset.cjs";
+
+/**
+ * Tailwind config for developing this package. It reuses the same preset that
+ * consumers install, so the tokens (sorokit-bg, sorokit-accent, ...) are
+ * defined in exactly one place.
+ *
+ * @type {import('tailwindcss').Config}
+ */
 export default {
+  presets: [preset],
   content: ["./src/**/*.{ts,tsx}"],
-  theme: {
-    extend: {
-      colors: {
-        sorokit: {
-          primary: "rgb(var(--sorokit-primary) / <alpha-value>)",
-          background: "rgb(var(--sorokit-background) / <alpha-value>)",
-          muted: "rgb(var(--sorokit-muted) / <alpha-value>)",
-        }
-      },
-      borderRadius: {
-        sorokit: "var(--sorokit-radius)",
-      }
-    },
-  },
-  plugins: [],
-}
+};
