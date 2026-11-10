@@ -2,8 +2,16 @@ import { useCallback, useState } from "react";
 import { useContract as useCoreContract, type NetworkConfig } from "@sorokit/core";
 
 /**
- * @sorokit/core's useContract returns a raw Stellar contract handle plus the
- * RPC server. This hook owns the UI-facing call lifecycle around it.
+ * Lifecycle status for a UI-facing contract call.
+ *
+ * **Experimental.** @sorokit/core's useContract returns a raw Stellar contract
+ * handle plus the RPC server, and this hook tracks a call lifecycle around it.
+ * Today `call()` only builds the contract invocation (`Contract.call()` returns
+ * an operation); it does not simulate, sign, or submit a transaction. For a
+ * real on-chain call use `useSorobanCall` from @sorokit/core, and pass its
+ * promise to `useTxToast().track()` to show a toast. Wiring this hook to the
+ * full flow needs a wallet state shared between components, which is tracked
+ * as follow-up work.
  */
 export type CallStatus = "idle" | "pending" | "success" | "error";
 

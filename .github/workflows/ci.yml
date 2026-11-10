@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Typecheck and build
+    runs-on: ubuntu-latest
+    steps:
+      # package.json depends on @sorokit/core via "file:../sorokit-core", so
+      # check out both repositories as siblings and build core first.
+      - uses: actions/checkout@v4
+        with:
+          repository: sorokit-dev/sorokit-core
+          path: sorokit-core
+      - uses: actions/checkout@v4
+        with:
+          path: sorokit-ui
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build @sorokit/core
+        working-directory: sorokit-core
+        run: |
+          npm install --no-audit --no-fund
+          npm run build
+      - name: Install
+        working-directory: sorokit-ui
+        run: npm install --no-audit --no-fund
+      - name: Typecheck
+        working-directory: sorokit-ui
+        run: npm run typecheck
+      - name: Build
+        working-directory: sorokit-ui
+        run: npm run build
+      - name: Check published entry points exist
+        working-directory: sorokit-ui
+        run: |
+          test -f dist/index.js
+          test -f dist/index.cjs
+          test -f dist/index.d.ts
+          test -f dist/styles.css

@@ -20,6 +20,10 @@ export default defineConfig({
           react: "React",
           "react-dom": "ReactDOM",
         },
+        // package.json exports "./styles.css" -> dist/styles.css, but Vite's
+        // library mode names the extracted stylesheet "style.css" by default.
+        assetFileNames: (assetInfo) =>
+          assetInfo.name?.endsWith(".css") ? "styles.css" : "assets/[name][extname]",
       },
     },
     sourcemap: true,
